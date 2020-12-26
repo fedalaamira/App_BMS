@@ -1,9 +1,11 @@
 package com.example.bms_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ProductsActivity : AppCompatActivity() {
 
@@ -25,6 +27,12 @@ class ProductsActivity : AppCompatActivity() {
         recycleCategories.adapter = categoryAdapter
         initCategories()
         categoryAdapter.notifyDataSetChanged()
+
+        val addProd = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        addProd.setOnClickListener {
+            val intent = Intent(this, AddProductActivity::class.java)
+            this.startActivity(intent)
+        }
     }
 
     fun initCategories(){
